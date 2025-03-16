@@ -16,6 +16,13 @@ A modern web application built with Next.js, featuring a visual simulator for CP
 - **Interactive Simulations** - Visualize CPU scheduling algorithms
 - **Performance Metrics** - Display average waiting time, turnaround time, and CPU utilization
 
+## Demo
+
+https://github.com/user-attachments/assets/b767e280-b6d3-448e-8919-62876ac4445d
+
+
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
