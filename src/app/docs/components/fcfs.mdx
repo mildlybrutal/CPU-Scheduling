@@ -1,0 +1,58 @@
+# First Come First Serve (FCFS)
+
+<SimulatorButton algorithm="fcfs" />
+
+## Overview
+
+FCFS is the simplest CPU scheduling algorithm that schedules processes in the order they arrive in the ready queue. It follows the principle of "first-come, first-served," similar to how a queue works in real life.
+
+## How It Works
+
+1. Processes are executed strictly in the order they enter the ready queue
+2. Non-preemptive: once a process starts executing, it continues until completion or until it performs an I/O operation
+3. Implements a standard FIFO (First-In-First-Out) queue data structure
+
+## Characteristics
+
+- Simple to implement and understand
+- Fair in the sense that processes are executed in arrival order
+- Can suffer from "convoy effect" where short processes wait behind long processes
+- No starvation as every process will eventually execute
+- Average waiting time can be high if processes with long burst times arrive early
+
+## The Convoy Effect
+
+The convoy effect is a significant drawback of FCFS. This occurs when shorter processes are forced to wait for a longer process to complete execution. This situation can significantly increase the average waiting time across all processes and reduce overall system efficiency.
+
+## When to Use FCFS
+
+FCFS works best in environments where:
+- Process burst times are roughly similar
+- Simplicity of implementation is more important than performance optimization
+- The system prioritizes fairness in terms of arrival order
+- Processes are primarily batch jobs rather than interactive tasks
+
+## Advantages and Disadvantages
+
+### Advantages
+- Simple to understand and implement
+- No complex calculations or predictions required
+- Fair based on arrival time
+- No indefinite postponement of any process
+
+### Disadvantages
+- Not optimal for time-sharing systems
+- Not suitable for interactive environments where quick response is critical
+- Poor average waiting time when process burst times vary significantly
+- CPU utilization can be lower than with other algorithms
+
+<div className="bg-gray-800 rounded-lg p-6 my-6">
+  <h3 className="text-xl font-semibold mb-4">Key Points</h3>
+  <ul className="space-y-2">
+    <li>✓ Simple to implement and understand</li>
+    <li>✓ Fair in terms of arrival order</li>
+    <li>✓ No starvation</li>
+    <li>⚠ Can suffer from convoy effect</li>
+  </ul>
+</div>
+

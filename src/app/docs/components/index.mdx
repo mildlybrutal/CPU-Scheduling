@@ -1,0 +1,66 @@
+# CPU Scheduling Algorithms
+
+This documentation covers the most common CPU scheduling algorithms used in operating systems. CPU scheduling is the basis of multi-programmed operating systems, allowing one process to use the CPU while another is waiting for I/O, thereby maximizing CPU utilization.
+
+## Algorithm Comparison
+
+Each scheduling algorithm has its own strengths and weaknesses:
+
+<div className="overflow-x-auto my-8">
+  <table className="w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-800">
+        <th className="border border-gray-700 px-6 py-3 text-left">Algorithm</th>
+        <th className="border border-gray-700 px-6 py-3 text-left">Optimal For</th>
+        <th className="border border-gray-700 px-6 py-3 text-left">Key Strength</th>
+        <th className="border border-gray-700 px-6 py-3 text-left">Key Weakness</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="hover:bg-gray-800/50">
+        <td className="border border-gray-700 px-6 py-4">FCFS</td>
+        <td className="border border-gray-700 px-6 py-4">Batch systems</td>
+        <td className="border border-gray-700 px-6 py-4">Simplicity</td>
+        <td className="border border-gray-700 px-6 py-4">Poor avg. waiting time</td>
+      </tr>
+      <tr className="hover:bg-gray-800/50">
+        <td className="border border-gray-700 px-6 py-4">SJF</td>
+        <td className="border border-gray-700 px-6 py-4">Known workloads</td>
+        <td className="border border-gray-700 px-6 py-4">Minimal avg. waiting time</td>
+        <td className="border border-gray-700 px-6 py-4">Potential starvation</td>
+      </tr>
+      <tr className="hover:bg-gray-800/50">
+        <td className="border border-gray-700 px-6 py-4">Round Robin</td>
+        <td className="border border-gray-700 px-6 py-4">Interactive systems</td>
+        <td className="border border-gray-700 px-6 py-4">Fair CPU distribution</td>
+        <td className="border border-gray-700 px-6 py-4">Context switch overhead</td>
+      </tr>
+      <tr className="hover:bg-gray-800/50">
+        <td className="border border-gray-700 px-6 py-4">Priority</td>
+        <td className="border border-gray-700 px-6 py-4">Mixed/critical workloads</td>
+        <td className="border border-gray-700 px-6 py-4">Urgent process handling</td>
+        <td className="border border-gray-700 px-6 py-4">Starvation risk</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Available Algorithms
+
+- [First Come First Serve (FCFS)](/docs/fcfs)
+- [Shortest Job First (SJF)](/docs/sjf)
+- [Round Robin (RR)](/docs/round-robin)
+- [Priority Scheduling](/docs/priority)
+
+## Evaluation Criteria
+
+When evaluating scheduling algorithms, consider:
+
+- **CPU Utilization**: Keeping the CPU as busy as possible
+- **Throughput**: Number of processes completed per time unit
+- **Turnaround Time**: Time from submission to completion
+- **Waiting Time**: Time spent waiting in the ready queue
+- **Response Time**: Time from submission until first response
+- **Fairness**: Equal CPU time to each process
+- **Predictability**: Consistency in performance
+

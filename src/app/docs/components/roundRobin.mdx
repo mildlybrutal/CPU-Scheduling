@@ -1,0 +1,78 @@
+# Round Robin (RR)
+
+<SimulatorButton algorithm="round-robin" />
+
+## Overview
+
+Round Robin is designed for time-sharing systems, allocating each process a small time slice (quantum) in a cyclic order. It's one of the oldest, simplest, and most widely used scheduling algorithms, especially in interactive systems.
+
+## How It Works
+
+1. Processes are placed in a FIFO circular queue
+2. Each process is allocated a fixed time quantum (typically 10-100ms)
+3. When time quantum expires, the process is preempted and added to the back of the ready queue
+4. If a process completes before its time quantum expires, the next process in queue is scheduled immediately
+
+## Characteristics
+
+- Preemptive algorithm ensuring fair CPU distribution
+- Fair allocation of CPU time among all processes
+- Good for time-sharing environments and interactive systems
+- No starvation as each process gets regular CPU time
+- Performance heavily depends on time quantum selection
+
+## Time Quantum Selection
+
+The choice of time quantum is critical in Round Robin scheduling:
+
+- **Too small**: Excessive context switching overhead reduces CPU efficiency
+- **Too large**: Algorithm degenerates to FCFS behavior
+- **Ideal range**: Typically 10-100ms depending on system workload
+
+A general rule is that 80% of CPU bursts should be shorter than the time quantum, allowing most processes to complete in one time slice while preventing any single process from monopolizing the CPU.
+
+## CPU Context Switching
+
+Round Robin induces more context switches than non-preemptive algorithms. Each context switch involves:
+- Saving current process state
+- Loading next process state
+- Switching memory context
+- Potential cache invalidation
+
+These operations add overhead that must be balanced against the benefits of improved responsiveness.
+
+## When to Use Round Robin
+
+Round Robin is ideal for:
+- Interactive systems where responsiveness is important
+- Time-sharing environments with multiple users
+- Systems where fairness in allocation is a priority
+- Mixed workloads with varying process types
+
+## Advantages and Disadvantages
+
+### Advantages
+- Fair CPU distribution among all processes
+- Better response time for short processes
+- No starvation as every process gets CPU time
+- Easy to implement and understand
+- Works well in time-sharing environments
+
+### Disadvantages
+- Higher average waiting time than SJF
+- Time quantum selection critically affects performance
+- Higher context switching overhead
+- Doesn't consider process priority or burst time
+- Not optimal for workloads with similar burst times
+
+<div className="bg-gray-800 rounded-lg p-6 my-6">
+  <h3 className="text-xl font-semibold mb-4">Key Points</h3>
+  <ul className="space-y-2">
+    <li>✓ Fair CPU distribution</li>
+    <li>✓ Good for interactive systems</li>
+    <li>✓ No starvation</li>
+    <li>⚠ Context switching overhead</li>
+  </ul>
+</div>
+
+

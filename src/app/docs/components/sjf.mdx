@@ -1,0 +1,74 @@
+# Shortest Job First (SJF)
+
+<SimulatorButton algorithm="sjf" />
+
+## Overview
+
+SJF selects the process with the smallest burst time (execution time) to run next. This algorithm prioritizes shorter jobs to minimize the average waiting time across all processes.
+
+## How It Works
+
+1. Processes are ordered based on their predicted CPU burst time
+2. The process with the shortest burst time is selected for execution
+3. Can be implemented in two variants:
+   - Non-preemptive SJF: Once a process starts, it runs to completion
+   - Preemptive SJF (SRTF - Shortest Remaining Time First): Current process may be preempted if a new process arrives with shorter burst time
+
+## Characteristics
+
+- Optimal for minimizing average waiting time (when all processes arrive simultaneously)
+- Potential for starvation of longer processes if short processes continuously arrive
+- Requires prediction of burst time (often based on historical data)
+- Better overall system throughput compared to FCFS
+
+## SJF vs. SRTF: Key Differences
+
+### Non-preemptive SJF
+- Once a process begins execution, it runs until completion
+- Easier to implement and has less overhead
+- Not as responsive to new short processes arriving
+
+### Preemptive SJF (SRTF)
+- Currently running process can be interrupted if a shorter process arrives
+- More responsive but introduces overhead from additional context switches
+- Provides better average waiting time but may delay longer processes even more
+
+## Burst Time Prediction
+
+A major challenge in SJF is predicting burst times. Common approaches include:
+
+1. **Exponential Averaging**: Uses the formula `tn+1 = α × actual_tn + (1-α) × predicted_tn` where α is a weighting factor between 0 and 1
+2. **Process History**: Using historical data from previous executions of the same process
+3. **Process Type Classification**: Categorizing processes by type and using typical burst times for each category
+
+## When to Use SJF
+
+SJF is particularly useful in:
+- Batch processing environments where job lengths are known or can be estimated
+- Systems where minimizing average waiting time is a priority
+- Scenarios where process burst times vary significantly
+- Environments where longer jobs can tolerate some additional delay
+
+## Advantages and Disadvantages
+
+### Advantages
+- Provides minimum average waiting time among all scheduling algorithms
+- Maximizes throughput by completing more short processes quickly
+- Works well when burst times are known or accurately predictable
+
+### Disadvantages
+- Can lead to starvation of longer processes
+- Requires advance knowledge or prediction of burst times
+- Not ideal for interactive systems where response time is critical
+- More complex to implement than FCFS
+
+<div className="bg-gray-800 rounded-lg p-6 my-6">
+  <h3 className="text-xl font-semibold mb-4">Key Points</h3>
+  <ul className="space-y-2">
+    <li>✓ Optimal average waiting time</li>
+    <li>✓ High throughput</li>
+    <li>✓ Good for batch systems</li>
+    <li>⚠ Possible starvation of long processes</li>
+  </ul>
+</div>
+

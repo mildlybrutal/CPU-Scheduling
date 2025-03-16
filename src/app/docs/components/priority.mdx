@@ -1,0 +1,89 @@
+# Priority Scheduling
+
+<SimulatorButton algorithm="priority" />
+
+## Overview
+
+In Priority Scheduling, each process is assigned a priority value, and the CPU is allocated to the process with the highest priority. Priority can be determined by factors such as memory requirements, time constraints, or importance of the process.
+
+## How It Works
+
+1. Each process has an associated priority (external or internal)
+2. The process with highest priority (lowest priority number or highest, depending on convention) is selected for execution
+3. Can be implemented in two variants:
+   - Preemptive: If a higher priority process arrives, the current process is preempted
+   - Non-preemptive: Current process completes execution before higher priority process is considered
+
+## Characteristics
+
+- Good for systems where certain processes need preferential treatment
+- Can lead to starvation of lower priority processes
+- Often implements aging to prevent starvation (gradually increasing priority of waiting processes)
+- Priorities can be static (fixed) or dynamic (changing over time)
+
+## Priority Assignment Strategies
+
+### Static Priorities
+- Assigned when process is created
+- Remain constant throughout process lifetime
+- Based on process type, user preferences, or system requirements
+
+### Dynamic Priorities
+- Change during process execution
+- Can be adjusted based on:
+  - Waiting time (aging)
+  - Ratio of CPU burst to I/O burst
+  - System load
+  - Resource requirements
+  - User interaction
+
+## The Starvation Problem
+
+A major drawback of priority scheduling is the potential for lower-priority processes to be starved of CPU time if higher-priority processes continually enter the system. To prevent this:
+
+### Aging Technique
+- Gradually increase the priority of processes that wait for long periods
+- Ensures every process eventually gets CPU time
+- Common implementation: Increment priority by 1 for every N time units of waiting
+
+## Priority Inversion
+
+Priority inversion occurs when a higher priority process is indirectly preempted by a lower priority process. This happens when:
+1. A high-priority process needs a resource
+2. That resource is held by a low-priority process
+3. The low-priority process is preempted by a medium-priority process
+4. The high-priority process waits indirectly for the medium-priority process
+
+Solutions include priority inheritance and priority ceiling protocols.
+
+## When to Use Priority Scheduling
+
+Priority scheduling is effective for:
+- Real-time systems with critical time constraints
+- Multi-user systems where user processes have different importance levels
+- Systems where certain services must be maintained at a minimum level
+- Mixed workloads where some processes are more important than others
+
+## Advantages and Disadvantages
+
+### Advantages
+- Can give preferential treatment to urgent or critical processes
+- Flexible through different priority assignment strategies
+- Can be adapted for different system requirements
+- Works well in real-time environments
+
+### Disadvantages
+- Can lead to starvation of lower priority processes
+- Priority inversion can cause unexpected behavior
+- More complex to implement than FCFS or Round Robin
+- May require additional mechanisms like aging
+
+<div className="bg-gray-800 rounded-lg p-6 my-6">
+  <h3 className="text-xl font-semibold mb-4">Key Points</h3>
+  <ul className="space-y-2">
+    <li>✓ Good for real-time systems</li>
+    <li>✓ Flexible priority assignment</li>
+    <li>✓ Supports critical process handling</li>
+    <li>⚠ Potential starvation of low-priority processes</li>
+  </ul>
+</div>
